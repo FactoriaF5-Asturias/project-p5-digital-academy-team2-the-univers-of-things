@@ -29,16 +29,16 @@ The project was developed using an Agile workflow, organized into **two two-week
 
 The complete project documentation is available in the Wiki:
 
-- [Complete documentation in the Wiki](https://github.com/Alexapop/project-p5-digital-academy-team2-the-univers-of-things/wiki)
+- [Complete documentation in the Wiki](https://github.com/FactoriaF5-Asturias/project-p5-digital-academy-team2-the-univers-of-things)/wiki)
 
 The Wiki is organized into the following sections:
 
-- [Getting Started](https://github.com/Alexapop/project-p5-digital-academy-team2-the-univers-of-things/wiki/Getting-Started)
-- [Features](https://github.com/Alexapop/project-p5-digital-academy-team2-the-univers-of-things/wiki/Features)
-- [Architecture](https://github.com/Alexapop/project-p5-digital-academy-team2-the-univers-of-things/wiki/Architecture)
-- [Testing](https://github.com/Alexapop/project-p5-digital-academy-team2-the-univers-of-things/wiki/Testing)
-- [Project Management](https://github.com/Alexapop/project-p5-digital-academy-team2-the-univers-of-things/wiki/Project-Management)
-- [Deployment](https://github.com/Alexapop/project-p5-digital-academy-team2-the-univers-of-things/wiki/Deployment)
+- [Getting Started](https://github.com/FactoriaF5-Asturias/project-p5-digital-academy-team2-the-univers-of-things/Getting-Started)
+- [Features](https://github.com/FactoriaF5-Asturias/project-p5-digital-academy-team2-the-univers-of-things/wiki/Features)
+- [Architecture](https://github.com/FactoriaF5-Asturias/project-p5-digital-academy-team2-the-univers-of-things/wiki/Architecture)
+- [Testing](https://github.com/FactoriaF5-Asturias/project-p5-digital-academy-team2-the-univers-of-things/wiki/Testing)
+- [Project Management](https://github.com/FactoriaF5-Asturias/project-p5-digital-academy-team2-the-univers-of-things/wiki/Project-Management)
+- [Deployment](https://github.com/FactoriaF5-Asturias/project-p5-digital-academy-team2-the-univers-of-things/wiki/Deployment)
 
 ## 🚀 Usage
 
