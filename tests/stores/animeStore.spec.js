@@ -103,50 +103,47 @@ describe('Anime Store', () => {
     })
 
     // GETTERS - totalPages
-    test('totalPages should return 0 when animes is empty', () => {
+    test('totalPages should return 1 by default', () => {
         const animeStore = useAnimeStore()
 
-        expect(animeStore.totalPages).toBe(0)
+        expect(animeStore.totalPages).toBe(1)
     })
 
-    test('totalPages should calculate correct number of pages', () => {
+    test('totalPages should use totalPagesFromApi', () => {
         const animeStore = useAnimeStore()
-        animeStore.animes = mockAnimes
-        animeStore.perPage = 2
+        animeStore.totalPagesFromApi = 5
 
-        expect(animeStore.totalPages).toBe(2) // 3 animes / 2 por página = 2 páginas
+        expect(animeStore.totalPages).toBe(5)
     })
 
     test('totalPages should handle null animes safely', () => {
         const animeStore = useAnimeStore()
         animeStore.animes = null
 
-        expect(animeStore.totalPages).toBe(0) // || [] lo convierte a array vacío
+        expect(animeStore.totalPages).toBe(1)
     })
 
-    test('totalPages should return 1 when animes length equals perPage', () => {
+    test('totalPages should keep minimum value of 1', () => {
         const animeStore = useAnimeStore()
-        animeStore.animes = mockAnimes.slice(0, 2)
-        animeStore.perPage = 2
+        animeStore.totalPagesFromApi = 0
 
         expect(animeStore.totalPages).toBe(1)
     })
 
     // GETTERS - paginatedAnimes
-    test('paginatedAnimes should return first page animes', () => {
+    test('paginatedAnimes should return loaded animes from API', () => {
         const animeStore = useAnimeStore()
         animeStore.animes = mockAnimes
-        animeStore.currentPage = 1
-        animeStore.perPage = 2
 
         const result = animeStore.paginatedAnimes
 
-        expect(result).toHaveLength(2)
+        expect(result).toHaveLength(3)
         expect(result[0].title).toBe('Naruto')
         expect(result[1].title).toBe('One Piece')
+        expect(result[2].title).toBe('Bleach')
     })
 
-    test('paginatedAnimes should return second page animes', () => {
+    test('paginatedAnimes should not slice animes locally', () => {
         const animeStore = useAnimeStore()
         animeStore.animes = mockAnimes
         animeStore.currentPage = 2
@@ -154,8 +151,7 @@ describe('Anime Store', () => {
 
         const result = animeStore.paginatedAnimes
 
-        expect(result).toHaveLength(1)
-        expect(result[0].title).toBe('Bleach')
+        expect(result).toEqual(mockAnimes)
     })
 
     test('paginatedAnimes should handle null animes safely', () => {
@@ -168,14 +164,14 @@ describe('Anime Store', () => {
         expect(result).toEqual([])
     })
 
-    test('paginatedAnimes should return empty array when page exceeds data', () => {
+    test('paginatedAnimes should return loaded animes even when currentPage changes', () => {
         const animeStore = useAnimeStore()
         animeStore.animes = mockAnimes
         animeStore.currentPage = 10
 
         const result = animeStore.paginatedAnimes
 
-        expect(result).toEqual([])
+        expect(result).toEqual(mockAnimes)
     })
 
     // ACTIONS - fetchAnimes
@@ -284,7 +280,7 @@ describe('Anime Store', () => {
     test('goToPage should call fetchAnimes with valid page', () => {
         const animeStore = useAnimeStore()
         animeStore.animes = mockAnimes
-        animeStore.perPage = 2
+        animeStore.totalPagesFromApi = 5
 
         const fetchSpy = vi.spyOn(animeStore, 'fetchAnimes').mockImplementation(() => {})
 
